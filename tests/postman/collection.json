@@ -99,7 +99,6 @@
                         "practicesoftwaretesting",
                         "com"
 					],
-					"port": "8091",
 					"path": [
 						"users",
 						"change-password"
