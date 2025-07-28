@@ -12,4 +12,4 @@ jobs:
       - name: Install Newman
         run: npm install -g newman
       - name: Run Postman Tests
-        run: newman run collection.json -d data.csv
+        run: newman run tests/postman/collection.json -d tests/postman/data.csv
