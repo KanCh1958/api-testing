@@ -93,7 +93,7 @@
 				},
 				"url": {
 					"raw": "https://api-with-bugs.practicesoftwaretesting.com/users/change-password",
-					"protocol": "https",
+					"protocol": "http",
 					"host": [
 						"api-with-bugs",
                         "practicesoftwaretesting",
