@@ -1,0 +1,9 @@
+test_case,current_password,new_password,new_password_confirmation,expected_status,expected_success
+"Valid password change","welcome01","Welcome@123","Welcome@123",200,true
+"Wrong current password","wrongPass","Welcome@123","Welcome@123",401,false
+"Password mismatch","welcome01","Welcome@123","Welcome@456",400,false
+"Too short new password","welcome01","123","123",400,false
+"Missing new_password","welcome01","","",400,false
+"Missing confirmation","welcome01","Welcome@123","",400,false
+"Same as current password","welcome01","welcome01","welcome01",400,false
+"Unauthorized request","","Welcome@123","Welcome@123",401,false

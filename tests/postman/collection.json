@@ -1,0 +1,110 @@
+{
+	"info": {
+		"_postman_id": "fc2995c7-c31c-4bf5-ad87-72a36e383a07",
+		"name": "toolshop",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "45902521"
+	},
+	"item": [
+		{
+			"name": "POST /users/change-password",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Cache-Control",
+						"value": "no-cache",
+						"name": "cache-control",
+						"type": "text"
+					},
+					{
+						"key": "Postman-Token",
+						"value": "<calculated when request is sent>",
+						"name": "postman-token",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "multipart/form-data; boundary=<calculated when request is sent>",
+						"name": "content-type",
+						"type": "text"
+					},
+					{
+						"key": "Content-Length",
+						"value": "<calculated when request is sent>",
+						"name": "content-length",
+						"type": "text"
+					},
+					{
+						"key": "Host",
+						"value": "<calculated when request is sent>",
+						"name": "host",
+						"type": "text"
+					},
+					{
+						"key": "User-Agent",
+						"value": "PostmanRuntime/7.39.1",
+						"name": "user-agent",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "*/*",
+						"name": "accept",
+						"type": "text"
+					},
+					{
+						"key": "Accept-Encoding",
+						"value": "gzip, deflate, br",
+						"name": "accept-encoding",
+						"type": "text"
+					},
+					{
+						"key": "Connection",
+						"value": "keep-alive",
+						"name": "connection",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwOTEvdXNlcnMvbG9naW4iLCJpYXQiOjE3NTM2OTM3NzAsImV4cCI6MTc2OTI5Mzc3MCwibmJmIjoxNzUzNjkzNzcwLCJqdGkiOiIxM244d3F6dEFtVlBpMHYwIiwic3ViIjoiMiIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjciLCJyb2xlIjoidXNlciJ9.6H5merLsxG455649MReFYw6y0rNwFyP2IX6PHR7Wk2I",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "current_password",
+							"value": "welcome02",
+							"type": "text"
+						},
+						{
+							"key": "new_password",
+							"value": "welcome01",
+							"type": "text"
+						},
+						{
+							"key": "new_password_confirmation",
+							"value": "welcome01",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8091/users/change-password",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8091",
+					"path": [
+						"users",
+						"change-password"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

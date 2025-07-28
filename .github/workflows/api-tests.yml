@@ -1,0 +1,15 @@
+name: API Tests
+on: [push, pull_request]
+jobs:
+  api-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Install Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+      - name: Install Newman
+        run: npm install -g newman
+      - name: Run Postman Tests
+        run: newman run collection.json -d data.csv
