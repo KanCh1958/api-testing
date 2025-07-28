@@ -95,7 +95,9 @@
 					"raw": "https://api-with-bugs.practicesoftwaretesting.com/users/change-password",
 					"protocol": "http",
 					"host": [
-						"localhost"
+						"api-with-bugs",
+                        "practicesoftwaretesting",
+                        "com"
 					],
 					"port": "8091",
 					"path": [
