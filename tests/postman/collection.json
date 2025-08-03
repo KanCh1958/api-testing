@@ -67,7 +67,7 @@
 					},
 					{
 						"key": "Authorization",
-						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL2FwaS13aXRoLWJ1Z3MucHJhY3RpY2Vzb2Z0d2FyZXRlc3RpbmcuY29tL3VzZXJzL2xvZ2luIiwiaWF0IjoxNzUzNjk1MzE3LCJleHAiOjE3NjkyOTUzMTcsIm5iZiI6MTc1MzY5NTMxNywianRpIjoibVN4eUt3a2h3b1VlUnVaeCIsInN1YiI6IjQiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3Iiwicm9sZSI6InVzZXIifQ.Y3y0_52EXHYK1K0S2ohbM2LmAn_JX7Xh6O4M6ldvVy8",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL2FwaS13aXRoLWJ1Z3MucHJhY3RpY2Vzb2Z0d2FyZXRlc3RpbmcuY29tL3VzZXJzL2xvZ2luIiwiaWF0IjoxNzU0MjE2NzYxLCJleHAiOjE3Njk4MTY3NjEsIm5iZiI6MTc1NDIxNjc2MSwianRpIjoiZTM2eHRkamJKSVZudFNzNyIsInN1YiI6IjIiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3Iiwicm9sZSI6InVzZXIifQ.X32gmRI6vhJx6U-LsF91IAocts7UBlw5ZSgqdrCj-fA",
 						"type": "text"
 					}
 				],
@@ -93,7 +93,7 @@
 				},
 				"url": {
 					"raw": "https://api-with-bugs.practicesoftwaretesting.com/users/change-password",
-					"protocol": "http",
+					"protocol": "https",
 					"host": [
 						"api-with-bugs",
                         "practicesoftwaretesting",
