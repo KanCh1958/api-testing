@@ -1,2 +1,2 @@
-test_case,current_password,new_password,new_password_confirmation,expected_status,expected_success
-"Valid password change","MyStrongPass!","Welcome@123","Welcome@123",200,true
+email,password,current_password,new_password,new_password_confirmation,
+johnfrontline@gmail.com,strongpassword,strongpassword,newstrongpassword,newstrongpassword
