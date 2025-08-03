@@ -1,4 +1,4 @@
-test_case_name,email,password,current_password,new_password,new_password_confirmation,expected_code
+test_name,email,password,current_password,new_password,new_password_confirmation,expected_code
 Missing current password,customer2@practicesoftwaretesting.com,welcome01, ,NewPass123!,NewPass123!,400
 Wrong current password,customer2@practicesoftwaretesting.com,welcome01,WrongOld123!,NewPass123!,NewPass123!,400
 Missing new password,customer2@practicesoftwaretesting.com,welcome01,welcome01, , ,400
