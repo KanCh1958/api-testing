@@ -1,8 +1,8 @@
-email,password,current_password,new_password,new_password_confirmation
-customer@practicesoftwaretesting.com,welcome01, ,NewPass123!,NewPass123!
-customer@practicesoftwaretesting.com,welcome01,WrongOld123!,NewPass123!,NewPass123!
-customer@practicesoftwaretesting.com,welcome01,welcome01, , 
-customer@practicesoftwaretesting.com,welcome01,welcome01,NewPass123!,Mismatch123!
-customer@practicesoftwaretesting.com,welcome01,welcome01,welcome01,welcome01
-customer@practicesoftwaretesting.com,WrongLogin123!,welcome01,NewPass123!,NewPass123!
-customer@practicesoftwaretesting.com,welcome01,welcome01,NewPass123!,NewPass123!
+test_case_name,email,password,current_password,new_password,new_password_confirmation,expected_code
+Missing current password,customer@practicesoftwaretesting.com,welcome01, ,NewPass123!,NewPass123!,400
+Wrong current password,customer@practicesoftwaretesting.com,welcome01,WrongOld123!,NewPass123!,NewPass123!,400
+Missing new password,customer@practicesoftwaretesting.com,welcome01,welcome01, , ,400
+New password and confirm password mismatch,customer@practicesoftwaretesting.com,welcome01,welcome01,NewPass123!,Mismatch123!,400
+New password is the same as current password,customer@practicesoftwaretesting.com,welcome01,welcome01,welcome01,welcome01,400
+Invalid login,customer@practicesoftwaretesting.com,WrongLogin123!,welcome01,NewPass123!,NewPass123!,401
+Change password success,customer@practicesoftwaretesting.com,welcome01,welcome01,NewPass123!,NewPass123!,200
