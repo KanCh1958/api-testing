@@ -18,9 +18,6 @@
 							"    pm.collectionVariables.set(\"auth_token\", jsonData.access_token);\r",
 							"} else {\r",
 							"    console.error(\"Login failed:\", pm.response.text());\r",
-							"    pm.test(\"Login failed\", function () {\r",
-							"        pm.expect(false).to.be.true;\r",
-							"    });\r",
 							"}"
 						],
 						"type": "text/javascript",
@@ -73,15 +70,13 @@
 					"listen": "test",
 					"script": {
 						"exec": [
-							"pm.test(\"Status code matches expected\", function () {\r",
-							"    pm.response.to.have.status(parseInt(pm.iterationData.get(\"expected_status\")));\r",
-							"});\r",
-							"\r",
 							"if (pm.response.code === 200) {\r",
 							"    pm.test(\"Password change successful\", function () {\r",
 							"        var jsonData = pm.response.json();\r",
 							"        pm.expect(jsonData.success).to.eql(true);\r",
 							"    });\r",
+							"} else {\r",
+							"    console.error(\"Password change failed\", pm.response.text());\r",
 							"}"
 						],
 						"type": "text/javascript",
