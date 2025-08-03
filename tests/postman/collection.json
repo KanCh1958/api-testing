@@ -7,97 +7,114 @@
 	},
 	"item": [
 		{
-			"name": "POST /users/change-password",
-			"request": {
-				"method": "POST",
-				"header": [
-					{
-						"key": "Cache-Control",
-						"value": "no-cache",
-						"name": "cache-control",
-						"type": "text"
-					},
-					{
-						"key": "Postman-Token",
-						"value": "<calculated when request is sent>",
-						"name": "postman-token",
-						"type": "text"
-					},
-					{
-						"key": "Content-Type",
-						"value": "multipart/form-data; boundary=<calculated when request is sent>",
-						"name": "content-type",
-						"type": "text"
-					},
-					{
-						"key": "Content-Length",
-						"value": "<calculated when request is sent>",
-						"name": "content-length",
-						"type": "text"
-					},
-					{
-						"key": "Host",
-						"value": "<calculated when request is sent>",
-						"name": "host",
-						"type": "text"
-					},
-					{
-						"key": "User-Agent",
-						"value": "PostmanRuntime/7.39.1",
-						"name": "user-agent",
-						"type": "text"
-					},
-					{
-						"key": "Accept",
-						"value": "*/*",
-						"name": "accept",
-						"type": "text"
-					},
-					{
-						"key": "Accept-Encoding",
-						"value": "gzip, deflate, br",
-						"name": "accept-encoding",
-						"type": "text"
-					},
-					{
-						"key": "Connection",
-						"value": "keep-alive",
-						"name": "connection",
-						"type": "text"
-					},
-					{
-						"key": "Authorization",
-						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL2FwaS13aXRoLWJ1Z3MucHJhY3RpY2Vzb2Z0d2FyZXRlc3RpbmcuY29tL3VzZXJzL2xvZ2luIiwiaWF0IjoxNzU0MjE2NzYxLCJleHAiOjE3Njk4MTY3NjEsIm5iZiI6MTc1NDIxNjc2MSwianRpIjoiZTM2eHRkamJKSVZudFNzNyIsInN1YiI6IjIiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3Iiwicm9sZSI6InVzZXIifQ.X32gmRI6vhJx6U-LsF91IAocts7UBlw5ZSgqdrCj-fA",
-						"type": "text"
+			"name": "POST /users/login",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = pm.response.json();\r",
+							"if (pm.response.code === 200 && jsonData.access_token) {\r",
+							"    pm.collectionVariables.set(\"auth_token\", jsonData.access_token);\r",
+							"} else {\r",
+							"    console.error(\"Login failed:\", pm.response.text());\r",
+							"    pm.test(\"Login failed\", function () {\r",
+							"        pm.expect(false).to.be.true;\r",
+							"    });\r",
+							"}"
+						],
+						"type": "text/javascript",
+						"packages": {}
 					}
-				],
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
 				"body": {
-					"mode": "formdata",
-					"formdata": [
+					"mode": "raw",
+					"raw": "{\r\n  \"email\": \"{{email}}\",\r\n  \"password\": \"{{password}}\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseURL}}/users/login",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"users",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST /users/change-password",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code matches expected\", function () {\r",
+							"    pm.response.to.have.status(parseInt(pm.iterationData.get(\"expected_status\")));\r",
+							"});\r",
+							"\r",
+							"if (pm.response.code === 200) {\r",
+							"    pm.test(\"Password change successful\", function () {\r",
+							"        var jsonData = pm.response.json();\r",
+							"        pm.expect(jsonData.success).to.eql(true);\r",
+							"    });\r",
+							"}"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
 						{
-							"key": "current_password",
-							"value": "welcome02",
-							"type": "text"
-						},
-						{
-							"key": "new_password",
-							"value": "welcome01",
-							"type": "text"
-						},
-						{
-							"key": "new_password_confirmation",
-							"value": "welcome01",
-							"type": "text"
+							"key": "token",
+							"value": "{{auth_token}}",
+							"type": "string"
 						}
 					]
 				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"current_password\": \"{{current_password}}\",\r\n  \"new_password\": \"{{new_password}}\",\r\n  \"new_password_confirmation\": \"{{new_password_confirmation}}\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
 				"url": {
-					"raw": "https://practicesoftwaretesting.com/users/change-password",
-					"protocol": "http",
+					"raw": "{{baseURL}}/users/change-password",
 					"host": [
-						"api-with-bugs",
-                        "practicesoftwaretesting",
-                        "com"
+						"{{baseURL}}"
 					],
 					"path": [
 						"users",
@@ -106,6 +123,18 @@
 				}
 			},
 			"response": []
+		}
+	],
+	"variable": [
+		{
+			"key": "baseURL",
+			"value": "https://api-with-bugs.practicesoftwaretesting.com",
+			"type": "default"
+		},
+		{
+			"key": "auth_token",
+			"value": "",
+			"type": "default"
 		}
 	]
 }
