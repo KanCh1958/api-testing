@@ -1,8 +1,8 @@
 email,password,current_password,new_password,new_password_confirmation
-customer@practicesoftwaretesting.com,welcome01, ,NewPass123!,NewPass123!
-customer@practicesoftwaretesting.com,welcome01,WrongOld123!,NewPass123!,NewPass123!
-customer@practicesoftwaretesting.com,welcome01,welcome01, , 
-customer@practicesoftwaretesting.com,welcome01,welcome01,NewPass123!,Mismatch123!
-customer@practicesoftwaretesting.com,welcome01,welcome01,welcome01,welcome01
-customer@practicesoftwaretesting.com,WrongLogin123!,welcome01,NewPass123!,NewPass123!
-customer@practicesoftwaretesting.com,welcome01,welcome01,NewPass123!,NewPass123!
+customer2@practicesoftwaretesting.com,welcome01, ,NewPass123!,NewPass123!
+customer2@practicesoftwaretesting.com,welcome01,WrongOld123!,NewPass123!,NewPass123!
+customer2@practicesoftwaretesting.com,welcome01,welcome01, , 
+customer2@practicesoftwaretesting.com,welcome01,welcome01,NewPass123!,Mismatch123!
+customer2@practicesoftwaretesting.com,welcome01,welcome01,welcome01,welcome01
+customer2@practicesoftwaretesting.com,WrongLogin123!,welcome01,NewPass123!,NewPass123!
+customer2@practicesoftwaretesting.com,welcome01,welcome01,NewPass123!,NewPass123!
