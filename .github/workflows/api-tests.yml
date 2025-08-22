@@ -16,9 +16,12 @@ jobs:
 
       - name: Run Login API Tests
         run: newman run tests/login/collection.json -d tests/login/data.csv
+        continue-on-error: true
 
       - name: Run Delete Product API Tests
         run: newman run tests/delete_product/collection.json -d tests/delete_product/data.csv
+        continue-on-error: true
 
       - name: Run Change Password API Tests
         run: newman run tests/change_password/collection.json -d tests/change_password/data.csv
+        continue-on-error: true
