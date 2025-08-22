@@ -28,8 +28,7 @@
 							"pm.test(`Status code is ${expectedCode}`, () => {\r",
 							"    console.log(actualCode === expectedCode ? \"PASSED\" : \"FAILED\");\r",
 							"    pm.expect(actualCode, `Expected ${expectedCode} but got ${actualCode}`).to.eql(expectedCode);\r",
-							"});\r",
-							""
+							"});"
 						],
 						"type": "text/javascript",
 						"packages": {}

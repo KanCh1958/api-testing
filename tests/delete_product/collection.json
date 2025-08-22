@@ -5,7 +5,7 @@
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "45902521"
 	},
-	"item": [	
+	"item": [
 		{
 			"name": "POST /users/login (Sub)",
 			"event": [
@@ -75,7 +75,100 @@
 			"response": []
 		},
 		{
+			"name": "POST /users/change-password",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"const testName = pm.iterationData.get(\"test_name\");\r",
+							"const expectedCode = parseInt(pm.iterationData.get(\"expected_code\"), 10);\r",
+							"const actualCode = pm.response.code;\r",
+							"const jsonData = pm.response.json();\r",
+							"\r",
+							"console.log(\"=== TEST CONTEXT ===\");\r",
+							"console.log(\"Test Name: \" + testName);\r",
+							"console.log(\"Email: \" + pm.iterationData.get(\"email\"));\r",
+							"console.log(\"Current Password: \" + pm.iterationData.get(\"current_password\") || \"empty\"\r",
+							");\r",
+							"console.log(\"New Password: \" + pm.iterationData.get(\"new_password\") || \"empty\"\r",
+							");\r",
+							"console.log(\"Expected Code: \" + expectedCode);\r",
+							"console.log(\"====================\");\r",
+							"\r",
+							"pm.test(`Status code is ${expectedCode}`, () => {\r",
+							"    console.log(actualCode === expectedCode ? \"PASSED\" : \"FAILED\")\r",
+							"    pm.expect(actualCode, `Expected ${expectedCode} but got ${actualCode}`).to.eql(expectedCode);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{auth_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"current_password\": \"{{current_password}}\",\r\n  \"new_password\": \"{{new_password}}\",\r\n  \"new_password_confirmation\": \"{{new_password_confirmation}}\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseURL}}/users/change-password",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"users",
+						"change-password"
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "DELETE /products/{id}",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"const testName = pm.iterationData.get(\"test_name\");\r",
+							"const expectedCode = parseInt(pm.iterationData.get(\"expected_code\"), 10);\r",
+							"const actualCode = pm.response.code;\r",
+							"const jsonData = pm.response.json();\r",
+							"\r",
+							"console.log(\"=== TEST CONTEXT ===\");\r",
+							"console.log(\"Test Name: \" + testName);\r",
+							"console.log(\"Product ID: \" + pm.iterationData.get(\"product_id\") || \"empty\");\r",
+							"console.log(\"Expected Code: \" + expectedCode);\r",
+							"console.log(\"====================\");\r",
+							"\r",
+							"pm.test(`Status code is ${expectedCode}`, () => {\r",
+							"    console.log(actualCode === expectedCode ? \"PASSED\" : \"FAILED\");\r",
+							"    pm.expect(actualCode, `Expected ${expectedCode} but got ${actualCode}`).to.eql(expectedCode);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
 			"request": {
 				"auth": {
 					"type": "bearer",
