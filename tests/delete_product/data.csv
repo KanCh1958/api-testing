@@ -1,7 +1,7 @@
 test_name,email,password,product_id,expected_code
-Invalid authentication,,,"1",401
+Invalid authentication, , ,"1",401
 Admin authentication,admin@practicesoftwaretesting.com,welcome01,2,200
 Normal user authentication,customer3@practicesoftwaretesting.com,pass123,3,401
-Missing product ID,admin@practicesoftwaretesting.com,welcome01,,422
+Missing product ID,admin@practicesoftwaretesting.com,welcome01, ,422
 Invalid product ID format,admin@practicesoftwaretesting.com,welcome01,abc,422
 Non-existent product ID,admin@practicesoftwaretesting.com,welcome01,9999,404
