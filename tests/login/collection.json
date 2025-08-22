@@ -1,0 +1,90 @@
+{
+	"info": {
+		"_postman_id": "fc2995c7-c31c-4bf5-ad87-72a36e383a07",
+		"name": "toolshop",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "45902521"
+	},
+	"item": [
+		{
+			"name": "POST /users/login (Main)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"const testName = pm.iterationData.get(\"test_name\");\r",
+							"const expectedCode = parseInt(pm.iterationData.get(\"expected_code\"), 10);\r",
+							"const actualCode = pm.response.code;\r",
+							"const jsonData = pm.response.json();\r",
+							"\r",
+							"console.log(\"=== TEST CONTEXT ===\");\r",
+							"console.log(\"Test Name: \" + testName);\r",
+							"console.log(\"Email: \" + pm.iterationData.get(\"email\") || \"empty\");\r",
+							"console.log(\"Password: \" + pm.iterationData.get(\"current_password\") || \"empty\");\r",
+							"console.log(\"Expected Code: \" + expectedCode);\r",
+							"console.log(\"====================\");\r",
+							"\r",
+							"pm.test(`Status code is ${expectedCode}`, () => {\r",
+							"    console.log(actualCode === expectedCode ? \"PASSED\" : \"FAILED\");\r",
+							"    pm.expect(actualCode, `Expected ${expectedCode} but got ${actualCode}`).to.eql(expectedCode);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"email\": \"{{email}}\",\r\n  \"password\": \"{{password}}\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseURL}}/users/login",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"users",
+						"login"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"variable": [
+		{
+			"key": "baseURL",
+			"value": "https://api-with-bugs.practicesoftwaretesting.com",
+			"type": "default"
+		},
+		{
+			"key": "auth_token",
+			"value": "",
+			"type": "default"
+		}
+	]
+}

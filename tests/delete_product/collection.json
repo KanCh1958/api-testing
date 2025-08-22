@@ -1,0 +1,118 @@
+{
+	"info": {
+		"_postman_id": "fc2995c7-c31c-4bf5-ad87-72a36e383a07",
+		"name": "toolshop",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "45902521"
+	},
+	"item": [	
+		{
+			"name": "POST /users/login (Sub)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = pm.response.json();\r",
+							"\r",
+							"if (pm.response.code === 200) {\r",
+							"    pm.test(\"Login - Success\", () => {\r",
+							"        pm.expect(jsonData).to.have.property(\"access_token\");\r",
+							"        pm.expect(jsonData.access_token).to.be.a(\"string\").and.not.empty;\r",
+							"    });\r",
+							"    pm.collectionVariables.set(\"auth_token\", jsonData.access_token);\r",
+							"} else {\r",
+							"    pm.test(\"Login - Failed\", () => {\r",
+							"        pm.expect.fail(\"Error code: \" + \r",
+							"            pm.response.code + \" - \" + \r",
+							"            pm.response.text()\r",
+							"        );\r",
+							"    });\r",
+							"    pm.collectionVariables.set(\"auth_token\", \"\");\r",
+							"}"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"email\": \"{{email}}\",\r\n  \"password\": \"{{password}}\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseURL}}/users/login",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"users",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE /products/{id}",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{auth_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/products/{{product_id}}",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"products",
+						"{{product_id}}"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"variable": [
+		{
+			"key": "baseURL",
+			"value": "https://api-with-bugs.practicesoftwaretesting.com",
+			"type": "default"
+		},
+		{
+			"key": "auth_token",
+			"value": "",
+			"type": "default"
+		}
+	]
+}

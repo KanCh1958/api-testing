@@ -4,5 +4,5 @@ Wrong current password,customer2@practicesoftwaretesting.com,welcome01,WrongOld1
 Missing new password,customer2@practicesoftwaretesting.com,welcome01,welcome01, , ,400
 New password and confirm password mismatch,customer2@practicesoftwaretesting.com,welcome01,welcome01,NewPass123!,Mismatch123!,400
 New password is the same as current password,customer2@practicesoftwaretesting.com,welcome01,welcome01,welcome01,welcome01,400
-Invalid login,customer2@practicesoftwaretesting.com,WrongLogin123!,welcome01,NewPass123!,NewPass123!,401
+Invalid authentication,customer2@practicesoftwaretesting.com,WrongLogin123!,welcome01,NewPass123!,NewPass123!,401
 Change password success,customer2@practicesoftwaretesting.com,welcome01,welcome01,NewPass123!,NewPass123!,200

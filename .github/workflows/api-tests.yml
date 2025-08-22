@@ -5,11 +5,20 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+
       - name: Install Node.js
         uses: actions/setup-node@v3
         with:
           node-version: 16
+
       - name: Install Newman
         run: npm install -g newman
-      - name: Run Postman Tests
-        run: newman run tests/postman/collection.json -d tests/postman/data.csv
+
+      - name: Run Login API Tests
+        run: newman run tests/login/collection.json -d tests/login/data.csv
+
+      - name: Run Delete Product API Tests
+        run: newman run tests/delete_product/collection.json -d tests/delete_product/data.csv
+
+      - name: Run Change Password API Tests
+        run: newman run tests/change_password/collection.json -d tests/change_password/data.csv
