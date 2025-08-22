@@ -148,6 +148,16 @@
 					"listen": "prerequest",
 					"script": {
 						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
 							"const testName = pm.iterationData.get(\"test_name\");\r",
 							"const expectedCode = parseInt(pm.iterationData.get(\"expected_code\"), 10);\r",
 							"const actualCode = pm.response.code;\r",
